@@ -1,0 +1,61 @@
+version: "2"
+run:
+  go: "1.24"
+linters:
+  default: all
+  disable:
+    - depguard
+    - gochecknoglobals
+    - godot
+    - godox
+    - mnd
+    - nilnil
+    - nlreturn
+    - rowserrcheck
+    - sqlclosecheck
+    - testpackage
+    - varnamelen
+    - wastedassign
+    - wsl
+  settings:
+    lll:
+      line-length: 140
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+    tagliatelle:
+      case:
+        rules:
+          json: snake
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - linters:
+          - dupl
+          - err113
+          - exhaustruct
+          - funlen
+        path: _test\.go
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+
