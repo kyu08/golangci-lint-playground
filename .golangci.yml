@@ -4,7 +4,10 @@ run:
 linters:
   default: none
   enable:
-    - recvcheck
+    - nilnil
+  settings:
+      nilnil:
+        only-two: false
 formatters:
   enable:
     - gci
